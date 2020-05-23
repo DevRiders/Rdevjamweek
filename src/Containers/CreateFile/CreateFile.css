@@ -1,0 +1,13 @@
+.Createfile{
+    font-size: 25px;
+    font-weight: 100;
+    display: inline-block;
+    margin: 30px;
+    padding: 30px;
+    background-color: rgba(214, 197, 197, 0.1);
+
+}
+.Createfile form {
+    padding: 20px;
+    background-color: transparent;
+}
