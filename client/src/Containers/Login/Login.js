@@ -1,8 +1,8 @@
 import React,{Component} from 'react';
 import classes from './Login.css';
 import Button from '../UI/Button/Button';
-//import { Link } from 'react-router-dom';
-//import axios from 'axios';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 class Login extends Component {
    constructor(){
@@ -31,6 +31,9 @@ class Login extends Component {
                 // made some changes................
                 // <Link to= '/createfile'></Link>
                 console.log(res);
+                console.log(res.data);
+                console.log(res.data.Status);
+                console.log(res.data.isLoggedIn);
             }).catch(err => console.log(err));
     };
 

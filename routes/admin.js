@@ -32,12 +32,10 @@ router.post("/login",(req, res) => {
     // Check password
         if(user.password === password){
             req.session.isLoggedIn = true;
-            req.session.save()
-            .then(() => console.log('success'))
-            .catch(err => console.log(err));
+            req.session.save();
             res.send({
                 Status:"success",
-                isLoggedIn:"true"
+                isLoggedIn:true
             });
         } else {
             res.send({
@@ -47,6 +45,14 @@ router.post("/login",(req, res) => {
         }
     })
     .catch(err => console.log(err));
+});
+
+router.post("/logout", (req,res)=> {
+    req.session.destroy();
+    res.send({
+        Status: "Successfully logged out",
+        isLoggedIn: false
+    });
 });
 
 module.exports = router;
