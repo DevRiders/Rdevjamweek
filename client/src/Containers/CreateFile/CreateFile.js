@@ -1,5 +1,7 @@
 import React , { Component }from 'react';
 import classes from './CreateFile.css';
+import axios from "axios";
+import Button from '../UI/Button/Button';
 
 class CreateFile extends Component {
     constructor(){
@@ -10,7 +12,7 @@ class CreateFile extends Component {
                 lin:"",
                 exp:"",
                 ts:[],
-                hby:"",
+                hby:[],
                 lng:[],
                 frnt:[],
                 back:[],
@@ -22,18 +24,18 @@ class CreateFile extends Component {
                 tm:"",
                 comm:"",
                 perf:"",
+                conf:""
 
         }
 
     }
 
+   
+
     onChange = e =>{
         this.setState({[e.target.id] : e.target.value});
     }
 
-    changeHandler (e,index){
-        this.setState({[e.target.id[index]] : e.target.value});
-    }
 
 
     onSubmit = e =>{
@@ -44,19 +46,20 @@ class CreateFile extends Component {
                 des:this.state.des,
                 lin:this.state.lin,
                 exp:this.state.exp,
-                ts:[...this.state.ts],
-                hby:this.state.hby,
-                lng:[...this.state.lng],
-                frnt:[...this.state.frnt],
-                back:[...this.state.back],
-                dta:[...this.state.dta],
-                mob:[...this.state.mod],
+                ts:[this.state.ts],
+                hby:[this.state.hby],
+                lng:[this.state.lng],
+                frnt:[this.state.frnt],
+                back:[this.state.back],
+                dta:[this.state.dta],
+                mob:[this.state.mod],
                 ss:this.state.ss,
                 smot:this.state.smot,
                 tt:this.state.tt,
                 tm:this.state.tm,
                 comm:this.state.comm,
                 perf:this.state.pref,
+                conf:this.state.conf
             
         };
         
@@ -92,106 +95,120 @@ class CreateFile extends Component {
             
                 <label>
                     LINK : 
-                    <input type = "text" lin = "lin" />
+                    <input type = "text" 
+                    id= "lin"
+                    value= {this.state.lin}
+                    onChange={this.onChange} />
                 </label>
            
                 <label>
                     EDUCATION : 
-                    <textarea value='Write here your experiance' />
+                    <textarea value={this.state.exp}
+                    id="exp"
+                    onChange={this.onChange} />
                 </label>
-            
+                <div>
                 <label>
                     TECHNICAL SKILLS : 
-                    {
-                        this.state.ts.map((ts,index)=>{
-                            return(
-                                <div key={index}>
-                                    <input onChange={(e)=>this.changeHandler(e,index)}
-                                    value={ts}>
-                                    </input>
-                                </div>
-                            )
-                        })
-                    }
+                    <input type = "text" 
+                    id= "ts"
+                    value= {this.state.ts}
+                    onChange={this.onChange} />
 
                 </label>
+                </div>
            
                 <label>
                     HOBBIES :
-                    <input type="text" hobby="hobby"></input>
+                    <input type = "text" 
+                    id= "hby"
+                    value= {this.state.hby}
+                    onChange={this.onChange} />
                 </label>
            
                 <label>
                     LANGUAGES : 
-                    <select value="select">
-                        <option value="Javascript">JAVASCRIPT</option>
-                        <option value="reactJs">REACTJS</option>
-                        <option value="reactNative">REACTNATIVE
-                        </option>
-                        <option value="python">PYTHON</option>
-                        <option value="nodeJs">NODEJS</option>
-                        <option value="Mongodb">MONGODB</option>
-                        <option value="mysql">MYSQL</option>
-                    </select>
+                    <input type = "text" 
+                    id= "lng"
+                    value= {this.state.lng}
+                    onChange={this.onChange} />
                 </label>
 
                 <label>
                     FRONT-END SKILLS : 
-                    <input type="text"
-                    name="frnt">
-                    </input>
+                    <input type = "text" 
+                    id= "frnt"
+                    value= {this.state.frnt}
+                    onChange={this.onChange} />
                 </label>
                 <label>
                     BACKEND SKILLS : 
-                    <input type="text"
-                    name="back">
-                    </input>
+                    <input type = "text" 
+                    id= "back"
+                    value= {this.state.back}
+                    onChange={this.onChange} />
                 </label>
                 <label>
                     DATABASE SKILLS :
-                    <input
-                    type="text"
-                    name="data">
-                    </input>
+                    <input type = "text" 
+                    id= "dta"
+                    value= {this.state.dta}
+                    onChange={this.onChange} />
                 </label>
                 <label>
                     MOBILE/TOOLS USED :
-                    <input
-                    type="text"
-                    name="mobile">
-                    </input>
+                    <input type = "text" 
+                    id= "mob"
+                    value= {this.state.mob}
+                    onChange={this.onChange} />
                 </label>
                 <label>
                     SOFT SKILLS :
                     <input
                     type="text"
-                    name="sskills"
+                    id="ss"
+                    value={this.state.ss}
+                    onChange={this.onChange}
                     ></input>
                 </label>
                 <label>
                     SELF-MOTIVATION :
-                    <textarea value='Write here your experiance' />
+                    <textarea
+                     value={this.state.smot}
+                    id="smot"
+                    onChange={this.onChange} />
                 </label>
                 <label>
                     TEAMWORK :
-                    <textarea value='Write here your experiance' />
+                    <textarea value={this.state.tt}
+                    id="tt"
+                    onChange={this.onChange} />
                 </label>
                 <label>
                     TIME MANAGEMENT :
-                    <textarea value='Write here your experiance' />
+                    <textarea value={this.state.tm}
+                    id="tm"
+                    onChange={this.onChange} />
                 </label>
                 <label>
                     COMMUNICATION : 
-                    <textarea value='Write here your experiance' />
+                    <textarea value={this.state.comm}
+                    id="comm"
+                    onChange={this.onChange} />
                 </label>
                 <label>
                     PERFORMANCE :
-                    <textarea value='Write here your experiance' />
+                    <textarea value={this.state.perf}
+                    id="perf"
+                    onChange={this.onChange} />
                 </label>
                 <label>
                     CONFLICT RESOLUTION :
-                    <textarea value='Write here your experiance' />
+                    <textarea value={this.state.conf}
+                    id="conf"
+                    onChange={this.onChange} />
                 </label>
+                <Button btnType="submit" clicked={this.onSubmit}>SUBMIT</Button>
             </form>
 
         </div>

@@ -1,0 +1,13 @@
+.Nav{
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(235, 227, 227,0.5);
+    padding: 20px;
+    font-size: 10px;
+    font-weight: 100;
+}
+.Nav h3 {
+    padding: 10px;
+    background: transparent;
+
+}

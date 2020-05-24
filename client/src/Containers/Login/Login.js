@@ -48,7 +48,7 @@ class Login extends Component {
     render(){
         let redirect = null;
         if(this.state.isLoggedIn) {
-            redirect= <Redirect to="/createfile"/>
+            redirect= <Redirect to="/profiles"/>
         }
         
     return (
