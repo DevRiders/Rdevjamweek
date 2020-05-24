@@ -24,19 +24,70 @@ class CreateFile extends Component {
                 perf:"",
 
         }
+
     }
+
+    onChange = e =>{
+        this.setState({[e.target.id] : e.target.value});
+    }
+
+    changeHandler (e,index){
+        this.setState({[e.target.id[index]] : e.target.value});
+    }
+
+
+    onSubmit = e =>{
+        e.preventDefault();
+
+        const userInfo ={
+            name:this.state.name,
+                des:this.state.des,
+                lin:this.state.lin,
+                exp:this.state.exp,
+                ts:[...this.state.ts],
+                hby:this.state.hby,
+                lng:[...this.state.lng],
+                frnt:[...this.state.frnt],
+                back:[...this.state.back],
+                dta:[...this.state.dta],
+                mob:[...this.state.mod],
+                ss:this.state.ss,
+                smot:this.state.smot,
+                tt:this.state.tt,
+                tm:this.state.tm,
+                comm:this.state.comm,
+                perf:this.state.pref,
+            
+        };
+        
+            console.log(userInfo);
+            axios.post('http://localhost:5000/admin/createfile',{userInfo})
+            .then(res => {
+                    console.log(res);
+                // made some changes................
+                // <Link to= '/createfile'></Link>
+                 
+            }).catch(err => console.log(err));
+    };
+
     render(){
         return(
         <div className={classes.Createfile}>
             <form>
                 <label>
                     NAME :
-                    <input type = "text" name = "name" />
+                    <input type = "text" 
+                    id = "name"
+                    value = {this.state.name} 
+                    onChange={this.onChange}/>
                  </label>
            
                 <label>
                     DESIGNATION :
-                    <input type = "text" des = "des" />
+                    <input type = "text"
+                     id = "des"
+                     value= {this.state.des}
+                     onChange = {this.onChange} />
                 </label>
             
                 <label>
@@ -51,15 +102,17 @@ class CreateFile extends Component {
             
                 <label>
                     TECHNICAL SKILLS : 
-                    <select value='select'>
-                        <option value="Javascript">JAVASCRIPT</option>
-                        <option value="reactJs">REACTJS</option>
-                        <option value="reactNative">REACTNATIVE</option>
-                        <option value="python">PYTHON</option>
-                        <option value="nodeJs">NODEJS</option>
-                        <option value="Mongodb">MONGODB</option>
-                        <option value="mysql">MYSQL</option>
-                    </select>
+                    {
+                        this.state.ts.map((ts,index)=>{
+                            return(
+                                <div key={index}>
+                                    <input onChange={(e)=>this.changeHandler(e,index)}
+                                    value={ts}>
+                                    </input>
+                                </div>
+                            )
+                        })
+                    }
 
                 </label>
            
