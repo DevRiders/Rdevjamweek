@@ -37,8 +37,7 @@ class CreateFile extends Component {
                     <select value='select'>
                         <option value="Javascript">JAVASCRIPT</option>
                         <option value="reactJs">REACTJS</option>
-                        <option value="reactNative">REACTNATIVE
-                        </option>
+                        <option value="reactNative">REACTNATIVE</option>
                         <option value="python">PYTHON</option>
                         <option value="nodeJs">NODEJS</option>
                         <option value="Mongodb">MONGODB</option>

@@ -1,0 +1,10 @@
+take one variable isLoggedIn = false by default and
+always check it brfore rendering any pages when the 
+username and password is correct i will send the status 
+and isLoggedIn to true then you render the all the protected
+pages.during login and logout u take the isLoggedIn value from
+server side and update it in client side and check that variable
+always.
+
+many more security and all ara available but we will do just this
+much first for this project.

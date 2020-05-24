@@ -26,12 +26,12 @@ class Login extends Component {
             password: this.state.password
         };
             console.log(userData);
-            //axios.post('http://localhost:5000/admin/login',{userData})
-            //.then(res => {
-              //  <Link to= '/createfile'></Link>
-            //})
-            
-
+            axios.post('http://localhost:5000/admin/login',{userData})
+            .then(res => {
+                // made some changes................
+                // <Link to= '/createfile'></Link>
+                console.log(res);
+            }).catch(err => console.log(err));
     };
 
     render(){
