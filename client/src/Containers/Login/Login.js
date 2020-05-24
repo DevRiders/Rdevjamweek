@@ -1,7 +1,6 @@
 import React,{Component} from 'react';
 import classes from './Login.css';
 import Button from '../UI/Button/Button';
-//import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 
