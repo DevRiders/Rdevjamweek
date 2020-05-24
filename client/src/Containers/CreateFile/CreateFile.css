@@ -10,4 +10,24 @@
 .Createfile form {
     padding: 20px;
     background-color: transparent;
+    display: flex;
+    flex-direction: column;
+}
+.Createfile form input{
+    background: transparent;
+    border-right-style: none;
+    border-left-style: none;
+    border-top-style: none;
+    border-radius: 10px;
+}
+.Createfile form label{
+    padding: 25px;
+}
+.Createfile form textarea{
+    box-sizing: border-box;
+    background: transparent;
+    border-right-style: none;
+    border-left-style: none;
+    border-top-style: none;
+    border-radius: 10px;
 }

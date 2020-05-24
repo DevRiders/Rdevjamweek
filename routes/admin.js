@@ -33,8 +33,7 @@ router.post("/login",(req, res) => {
         if(user.password === password){
             req.session.isLoggedIn = true;
             req.session.save()
-            .then(() => console.log('success'))
-            .catch(err => console.log(err));
+            
             res.send({
                 Status:"success",
                 isLoggedIn:"true"

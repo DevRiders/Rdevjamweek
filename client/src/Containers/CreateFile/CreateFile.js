@@ -5,6 +5,23 @@ class CreateFile extends Component {
     constructor(){
         super();
         this.state = {
+                name:"",
+                des:"",
+                lin:"",
+                exp:"",
+                ts:[],
+                hby:"",
+                lng:[],
+                frnt:[],
+                back:[],
+                dta:[],
+                mob:[],
+                ss:"",
+                smot:"",
+                tt:"",
+                tm:"",
+                comm:"",
+                perf:"",
 
         }
     }
@@ -100,15 +117,28 @@ class CreateFile extends Component {
                 </label>
                 <label>
                     SELF-MOTIVATION :
-                    <input
-                    type="text"
-                    name="smot"
-                    ></input>
+                    <textarea value='Write here your experiance' />
                 </label>
-                <input 
-                type="text"
-                name="twrk"></input>
-                <label htmlFor="twrk">TEAM-WORK</label>
+                <label>
+                    TEAMWORK :
+                    <textarea value='Write here your experiance' />
+                </label>
+                <label>
+                    TIME MANAGEMENT :
+                    <textarea value='Write here your experiance' />
+                </label>
+                <label>
+                    COMMUNICATION : 
+                    <textarea value='Write here your experiance' />
+                </label>
+                <label>
+                    PERFORMANCE :
+                    <textarea value='Write here your experiance' />
+                </label>
+                <label>
+                    CONFLICT RESOLUTION :
+                    <textarea value='Write here your experiance' />
+                </label>
             </form>
 
         </div>
