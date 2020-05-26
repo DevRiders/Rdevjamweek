@@ -17,7 +17,7 @@ class CreateFile extends Component {
                 frnt:"",
                 back:"",
                 dta:"",
-                mob:[],
+                mob:"",
                 ss:"",
                 smot:"",
                 tt:"",
@@ -29,6 +29,7 @@ class CreateFile extends Component {
         }
 
     }
+
 
    
 
