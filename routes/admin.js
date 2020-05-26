@@ -87,10 +87,11 @@ router.post("/createProfile",(req, res) => {
     const tm = req.body.userInfo.tm;
     const comm = req.body.userInfo.comm;
     const perf = req.body.userInfo.perf;
+    const conf = req.body.userInfo.conf;
 
     const profile = new Profile(name,des,lin,exp,
         ts,hby,lng,frnt,back,dta,mob,ss,smot,tt,
-        tm,comm,perf);
+        tm,comm,perf,conf);
 
     profile.save()
     .then(res => {
