@@ -2,7 +2,7 @@ const mongodb = require('mongodb');
 const getDb = require('../util/database').getDb;
 
 class Profile{
-    constructor(name,des,lin,exp,ts,hby,lng,frnt,back,dta,mob,ss,smot,tt,tm,comm,perf){
+    constructor(name,des,lin,exp,ts,hby,lng,frnt,back,dta,mob,ss,smot,tt,tm,comm,perf,id){
         this.name = name;
         this.des = des;
         this.lin=lin;
@@ -20,11 +20,16 @@ class Profile{
         this.tm = tm;
         this.comm = comm;
         this.perf = perf;
+        this._id = id ? new mongodb.ObjectId(id) : null;
     }
     save(){
         const db = getDb();
         let dbOp;
-        dbOp = db.collection('profile').insertOne(this);
+        if(!this._id){
+            dbOp = db.collection('profile').insertOne(this);
+        }else{
+            dbOp = db.collection('profiles').updateOne({_id: this._id},{$set: this});
+        }
         return dbOp
         .then(result => {
         console.log(result);
@@ -34,25 +39,27 @@ class Profile{
         });
     }
 
-    fetchAll(){
+    static fetchAll(){
         const db = getDb();
         return db.collection('profile').find().toArray()
         .then(profiles => {
-            console.log(profiles);
+            console.log("fetched inside models");
+            return profiles;
         })
         .catch(err => console.log(err));
     }
 
-    findById(profileId){
+    static findById(profileId){
         const db = getDb();
         return db.collection('profile')
         .find({_id: new mongodb.ObjectId(profileId)})
         .next()
         .then(profile => {
             console.log("found");
-            console.log(profile);
+            return profile;
         })
         .catch(err => console.log(err));
     }
 }
+
 module.exports = Profile;

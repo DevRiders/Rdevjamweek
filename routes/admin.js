@@ -64,11 +64,6 @@ router.post("/logout", (req,res)=> {
 
 //this route is executed when the admin fills the form and submit to save the profiles.
 router.post("/createProfile",(req, res) => {
-    const {errors, isValid} = validateRegisterInput(req.body);
-
-    if(!isValid){
-        res.send(errors);
-    }
 
     const name = req.body.userInfo.name;
     const des = req.body.userInfo.des;
@@ -92,34 +87,35 @@ router.post("/createProfile",(req, res) => {
     const profile = new Profile(name,des,lin,exp,
         ts,hby,lng,frnt,back,dta,mob,ss,smot,tt,
         tm,comm,perf,conf);
-
+    
+    let tiles; 
+        
     profile.save()
     .then(res => {
         console.log("created a profile!!!");
+        return Profile.fetchAll()
+    })
+    .then(profiles => {
+        console.log(profiles);
+        res.send(profiles);
     })
     .catch(err => {
         console.log(err);
     });
-
-    let profiles;
-    profiles = Profile.fetchAll()
-    .then(res => {
-        console.log(res);
-        console.log("fetched");
-        res.send(profiles);
-    })
-    .catch(err => console.log(err));
-
+    // Profile.fetchAll()
+    //     .then(profiles => {
+    //         console.log(profiles);
+    //         res.send(profiles);
+    //     })
+    //     .catch(err => console.log(err));
 });
 
 
 
 // after login this route is to be visited to view all profiles.
 router.get("/profiles",(req,res)=>{
-    let profiles;
-    profiles = Profile.fetchAll()
-    .then(res => {
-        console.log(res);
+    Profile.fetchAll()
+    .then(profiles => {
         console.log("fetched");
         res.send(profiles);
     })
@@ -132,8 +128,8 @@ router.get("/profile/:id",(req,res)=>{
     const profileId = req.params.id;
     Profile.findById(profileId)
     .then(profile => {
+        console.log("fetched single profile");
         res.send(profile);
-        console.log("sent to client");
     }).catch(err => console.log(err));
 })
 
@@ -146,12 +142,13 @@ router.get("/editProfile/:id",(req,res)=> {
     const profileId = req.params.id;
     Profile.findById(profileId)
     .then(profile => {
+        console.log("fetched single profile to edit");
         res.send(profile);
-        console.log("sent to client");
     }).catch(err => console.log(err));
 });
 
 router.post("/editProfile/:id",(req,res)=>{
+    const profId = req.params.id;
     const name = req.body.userInfo.name;
     const des = req.body.userInfo.des;
     const lin = req.body.userInfo.lin;
@@ -172,11 +169,16 @@ router.post("/editProfile/:id",(req,res)=>{
 
     const profile = new Profile(name,des,lin,exp,
         ts,hby,lng,frnt,back,dta,mob,ss,smot,tt,
-        tm,comm,perf);
+        tm,comm,perf,profId);
 
     profile.save()
     .then(res => {
         console.log("updated a profile!!!");
+        return Profile.fetchAll()
+    })
+    .then(profiles => {
+        console.log(profiles);
+        res.send(profiles);
     })
     .catch(err => {
         console.log(err);

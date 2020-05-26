@@ -32,6 +32,7 @@ class Login extends Component {
             console.log(userData);
             axios.post('http://localhost:5000/admin/login',{userData})
             .then(res => {
+                console.log(res);
                     this.setState({
                         isLoggedIn: res.data.isLoggedIn
                     });  
