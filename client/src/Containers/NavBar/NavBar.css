@@ -1,13 +1,24 @@
 .Nav{
     display: flex;
     flex-direction: row;
-    background-color: rgb(235, 227, 227,0.5);
-    padding: 20px;
-    font-size: 10px;
-    font-weight: 100;
+    background-color: rgba(218, 210, 197, 0.767);
+    background-size: auto;
+
 }
-.Nav h3 {
-    padding: 10px;
+.Nav ul li {
+    
     background: transparent;
+    font-size: 20px;
+    padding-left: 25px;
+    font-weight: 200;
+    font-style: bold;
+    font-family: monospace;
+    float: left;
+    text-shadow: black;
+}
+.Nav ul {
+    display: flex;
+    flex-direction: row;
+    margin: 20px;
 
 }

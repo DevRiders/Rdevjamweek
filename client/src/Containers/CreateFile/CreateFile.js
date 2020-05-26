@@ -46,13 +46,13 @@ class CreateFile extends Component {
                 des:this.state.des,
                 lin:this.state.lin,
                 exp:this.state.exp,
-                ts:[this.state.ts],
-                hby:[this.state.hby],
-                lng:[this.state.lng],
-                frnt:[this.state.frnt],
-                back:[this.state.back],
-                dta:[this.state.dta],
-                mob:[this.state.mod],
+                ts:this.state.ts,
+                hby:this.state.hby,
+                lng:this.state.lng,
+                frnt:this.state.frnt,
+                back:this.state.back,
+                dta:this.state.dta,
+                mob:this.state.mod,
                 ss:this.state.ss,
                 smot:this.state.smot,
                 tt:this.state.tt,
@@ -64,9 +64,9 @@ class CreateFile extends Component {
         };
         
             console.log(userInfo);
-            axios.post('http://localhost:5000/admin/createfile',{userInfo})
+            axios.post('http://localhost:5000/admin/createProfile',{userInfo})
             .then(res => {
-                    console.log(res);
+                    console.log('done!!!');
                 // made some changes................
                 // <Link to= '/createfile'></Link>
                  

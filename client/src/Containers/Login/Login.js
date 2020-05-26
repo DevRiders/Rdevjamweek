@@ -39,6 +39,10 @@ class Login extends Component {
                 // <Link to= '/createfile'></Link>
                  
             }).catch(err => console.log(err));
+            if(this.state.isLoggedIn)
+            {
+                alert('Invalid password or username!!')
+            }
     };
 
    
@@ -49,6 +53,7 @@ class Login extends Component {
         if(this.state.isLoggedIn) {
             redirect= <Redirect to="/profiles"/>
         }
+        
         
     return (
         <div className={classes.Log}>

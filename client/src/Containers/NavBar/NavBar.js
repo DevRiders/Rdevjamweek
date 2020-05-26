@@ -6,9 +6,11 @@ class NavBar extends Component {
     render(){
         return(
             <div className={classes.Nav}>
-                <h3><NavLink to='/profiles'>Profile</NavLink></h3>
-                <h3><NavLink to='/createprofile'>CreateProfile</NavLink></h3>
-                <h3><NavLink to='/'>Logout</NavLink></h3>
+
+                <ul>
+                <li>   <NavLink to='/profiles'>Profile</NavLink></li> 
+                <li>       <NavLink to='/createprofile'>CreateProfile</NavLink> </li>
+                   <li><NavLink to='/'>Logout</NavLink></li></ul>
             </div>
 
         );
