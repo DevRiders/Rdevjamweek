@@ -52,13 +52,13 @@ class CreateFile extends Component {
                 frnt:this.state.frnt,
                 back:this.state.back,
                 dta:this.state.dta,
-                mob:this.state.mod,
+                mob:this.state.mob,
                 ss:this.state.ss,
                 smot:this.state.smot,
                 tt:this.state.tt,
                 tm:this.state.tm,
                 comm:this.state.comm,
-                perf:this.state.pref,
+                perf:this.state.perf,
                 conf:this.state.conf
             
         };
@@ -67,6 +67,7 @@ class CreateFile extends Component {
             axios.post('http://localhost:5000/admin/createProfile',{userInfo})
             .then(res => {
                     console.log('done!!!');
+                    console.log(res);
                 // made some changes................
                 // <Link to= '/createfile'></Link>
                  
