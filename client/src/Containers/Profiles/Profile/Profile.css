@@ -1,0 +1,22 @@
+.Profile {
+    display: inline-block;
+    box-shadow: whitesmoke;
+    padding: 30px;
+    margin: 20px;
+    background: rgba(0,0,0,0.3);
+}
+.Pro h1{
+     font-size: 25px;
+     font-weight: 100;
+     font-family: monospace;
+     text-align: center;
+}
+
+.Btn {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    box-shadow: whitesmoke;
+
+
+}

@@ -55,3 +55,4 @@ class Profile{
         .catch(err => console.log(err));
     }
 }
+module.exports = Profile;

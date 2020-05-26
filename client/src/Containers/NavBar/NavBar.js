@@ -1,12 +1,12 @@
-import React ,{ Component } from 'react';
+import React  from 'react';
 import classes from './NavBar.css';
 import { NavLink } from 'react-router-dom';
+//import axios from 'axios';
 
-class NavBar extends Component {
-    render(){
+const navBar = (props) =>{
         return(
+            
             <div className={classes.Nav}>
-
                 <ul>
                 <li>   <NavLink to='/profiles'>Profile</NavLink></li> 
                 <li>       <NavLink to='/createprofile'>CreateProfile</NavLink> </li>
@@ -15,5 +15,6 @@ class NavBar extends Component {
 
         );
     }
-}
-export default NavBar;
+
+
+export default navBar;
